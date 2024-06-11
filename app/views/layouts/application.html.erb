@@ -11,19 +11,20 @@
   </head>
 
   <body>
-  <header>
-    <% if user_signed_in? %>
+    <header>
       <li>
-        <%= link_to "log out",destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "Homes", root_path %>
       </li>
       <li>
-        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "About", about_path %>
       </li>
-    <% end %>
-  </header>  <%= yield %>
+      <li>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
+      </li>
+    </header>
+    <%= yield %>
   </body>
 </html>
