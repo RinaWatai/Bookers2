@@ -6,10 +6,9 @@ and emotions</p>
 
 <p>about various books!</p>
 
-<span>
-  <%= link_to "sign up", "/users/sign_up" %>
-</span>
-
-<span>
-  <%= link_to "log out", destroy_user_session_path, method: :delete %>
-</span>
+  <li>
+    <%= link_to "Log in", new_user_session_path %>
+  </li>
+  <li>
+    <%= link_to "sign up", "/users/sign_up" %>
+  </li>
