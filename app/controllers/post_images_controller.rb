@@ -1,4 +1,6 @@
 class PostImagesController < ApplicationController
+  before_action :authenticate_user!, except: [:root]
+
   def new
     @post_image = PostImage.new
   end
@@ -15,11 +17,11 @@ class PostImagesController < ApplicationController
 
   def show
   end
-  
+
   private
 
   def post_image_params
     params.require(:post_image).permit(:title, :image, :caption)
   end
-  
+
 end

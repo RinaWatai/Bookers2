@@ -1,2 +1,28 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= flash[:notice] %>
+      　<%= render 'layouts/user', user: @user, book: @book %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h1>Users</h1>
+          <table class = "table">
+            <tr>
+              <th>image</th>
+              <th>name</th>
+            </tr>
+
+        <% @users.each do |user| %>
+        <div class="d-block">
+            <tr>
+                <td><%= image_tag user.get_profile_image(150,150) %></td>
+                <td><%= user.name %></td>
+                <td><%= link_to 'Show', user_path(user) %></td>
+            </tr>
+        </table>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

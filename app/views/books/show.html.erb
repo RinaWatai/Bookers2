@@ -1,2 +1,33 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container">
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= flash[:notice] %>
+      <%= render 'layouts/user', user: @user, book: Book.new %>
+    </div>
+
+
+    <div class="col-md-8 offset-md-1">
+        <h1>Book detail</h1>
+        <%= link_to (@user) do  %>
+          <%= image_tag @user.get_profile_image(150,150) %>
+          <%= @user.name %>
+        <% end %>
+        <%= @book.title %>
+        <%= @book.body %>
+        <% if current_user == @book.user %>
+          <%= link_to 'Edit', edit_book_path %>
+          <%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' } %>
+        <% end %>
+    </div>
+
+    </div>
+  </div>
+</div>
